@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="TURN"
             android:id="@+id/textView4"
             android:layout_gravity="center" />
     </LinearLayout>
@@ -143,29 +143,32 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="New Button"
             android:id="@+id/button2"
             android:layout_weight="1.3"
             android:layout_margin="4dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@color/buttons"
+            android:text="@string/undo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:text="WIN"
             android:id="@+id/textView3"
             android:layout_weight=".4"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:gravity="center_vertical|center_horizontal" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="New Button"
+            android:text="@string/reset"
             android:id="@+id/button3"
             android:layout_weight="1.3"
             android:layout_margin="4dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@color/buttons" />
     </LinearLayout>
 </LinearLayout>

@@ -3,5 +3,7 @@
     <color name="background">#464646</color>
     <color name="buttons">#5C5C5C</color>
     <color name="tttButtons">#372828</color>
+    <color name="background_play">#797979</color>
+    <color name="text">#ABA9A9</color>
 
 </resources>

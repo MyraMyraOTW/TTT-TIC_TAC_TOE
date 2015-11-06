@@ -16,6 +16,12 @@
     <string name="p2">PLAYER 2</string>
 
     <string name="save">SAVE</string>
+
+    <string name="reset">RESET</string>
+    <string name="undo">UNDO</string>
+
     <string name="title_activity_game_">Game_Activity</string>
     <string name="title_activity_playersetactivity">playersetactivity</string>
+    <string name="title_activity_history_">History_Activity</string>
+    <string name="title_activity_histactivity">histactivity</string>
 </resources>

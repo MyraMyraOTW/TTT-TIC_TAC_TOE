@@ -28,6 +28,10 @@
             android:name=".playersetactivity"
             android:label="@string/title_activity_playersetactivity" >
         </activity>
+        <activity
+            android:name=".histactivity"
+            android:label="@string/title_activity_histactivity" >
+        </activity>
     </application>
 
 </manifest>
