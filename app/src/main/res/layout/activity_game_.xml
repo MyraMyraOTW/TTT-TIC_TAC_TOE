@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="TURN"
-            android:id="@+id/textView4"
+            android:id="@+id/turn"
             android:layout_gravity="center" />
     </LinearLayout>
 
@@ -32,7 +32,8 @@
         android:layout_height="match_parent"
         android:layout_weight=".8"
         android:weightSum="3"
-        android:id="@+id/tttcontainer">
+        android:id="@+id/tttcontainer"
+        android:background="@color/background_play">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -44,26 +45,33 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton"
+                android:id="@+id/tl"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton2"
+                android:id="@+id/tm"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton3"
+                android:id="@+id/tr"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="3dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -76,26 +84,33 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton4"
+                android:id="@+id/ml"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginBottom="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/mm"
+                android:layout_weight="1"
+                android:background="@color/tttButtons"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_margin="3dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton5"
+                android:id="@+id/mr"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/imageButton6"
-                android:layout_weight="1"
-                android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginBottom="3dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -108,26 +123,33 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton7"
+                android:id="@+id/bl"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton8"
+                android:id="@+id/bm"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton9"
+                android:id="@+id/br"
                 android:layout_weight="1"
                 android:background="@color/tttButtons"
-                android:layout_margin="3dp" />
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -143,19 +165,19 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/button2"
+            android:id="@+id/undo"
             android:layout_weight="1.3"
-            android:layout_margin="4dp"
             android:layout_gravity="center"
             android:background="@color/buttons"
-            android:text="@string/undo" />
+            android:text="@string/undo"
+            android:layout_marginRight="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="WIN"
-            android:id="@+id/textView3"
+            android:id="@+id/win_condition"
             android:layout_weight=".4"
             android:layout_gravity="center"
             android:gravity="center_vertical|center_horizontal" />
@@ -165,10 +187,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/reset"
-            android:id="@+id/button3"
+            android:id="@+id/reset"
             android:layout_weight="1.3"
-            android:layout_margin="4dp"
             android:layout_gravity="center"
-            android:background="@color/buttons" />
+            android:background="@color/buttons"
+            android:layout_marginLeft="20dp" />
     </LinearLayout>
 </LinearLayout>

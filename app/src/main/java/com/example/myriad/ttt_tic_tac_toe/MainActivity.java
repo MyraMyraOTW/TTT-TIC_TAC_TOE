@@ -1,9 +1,14 @@
 package com.example.myriad.ttt_tic_tac_toe;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +16,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.play_button).setOnClickListener(menulistener);
+        findViewById(R.id.hist_button).setOnClickListener(menulistener);
+        findViewById(R.id.player_set_button).setOnClickListener(menulistener);
+
+    }
+
+    private View.OnClickListener menulistener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.play_button:
+                    Log.d("CLICKED", "play button");
+                    intent_starter(Game_Activity.class);
+                    break;
+                case R.id.hist_button:
+                    Log.d("CLICKED", "history button");
+                    intent_starter(histactivity.class);
+                    break;
+                case R.id.player_set_button:
+                    Log.d("CLICKED", "set player button");
+                    intent_starter(playersetactivity.class);
+                    break;
+            }
+        }
+    };
+
+    private void intent_starter(Class call_class){
+        Intent swintent = new Intent((getApplicationContext()), call_class);
+        startActivity(swintent);
     }
 
     @Override
