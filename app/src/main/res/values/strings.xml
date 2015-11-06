@@ -16,4 +16,6 @@
     <string name="p2">PLAYER 2</string>
 
     <string name="save">SAVE</string>
+    <string name="title_activity_game_">Game_Activity</string>
+    <string name="title_activity_playersetactivity">playersetactivity</string>
 </resources>

@@ -21,8 +21,12 @@
             android:label="@string/title_activity_play" >
         </activity>
         <activity
-            android:name=".Player_SetActivity"
-            android:label="@string/title_activity_player__set" >
+            android:name=".Game_Activity"
+            android:label="@string/title_activity_game_" >
+        </activity>
+        <activity
+            android:name=".playersetactivity"
+            android:label="@string/title_activity_playersetactivity" >
         </activity>
     </application>
 
