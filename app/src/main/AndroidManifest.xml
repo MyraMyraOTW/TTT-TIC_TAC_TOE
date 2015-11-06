@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PlayActivity"
+            android:label="@string/title_activity_play" >
+        </activity>
+        <activity
+            android:name=".Player_SetActivity"
+            android:label="@string/title_activity_player__set" >
+        </activity>
     </application>
 
 </manifest>
