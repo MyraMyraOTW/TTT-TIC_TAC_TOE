@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">@color/text</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:colorPrimaryDark">@color/background</item>
+        <item name="android:colorPrimaryDark">@color/tttButtons</item>
         <item name="android:navigationBarColor">@color/background</item>
     </style>
 </resources>
