@@ -21,14 +21,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/p1"
-            android:id="@+id/textView"
+            android:id="@+id/P1stattview"
             android:layout_weight=".5"
             android:layout_gravity="center" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/etxt1"
             android:layout_weight="1"
             android:layout_gravity="center" />
     </LinearLayout>
@@ -44,14 +44,14 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/p2"
-            android:id="@+id/textView2"
+            android:id="@+id/P2stattview"
             android:layout_weight=".5"
             android:layout_gravity="center" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
+            android:id="@+id/etxt2"
             android:layout_weight="1"
             android:layout_gravity="center" />
     </LinearLayout>
@@ -61,6 +61,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:id="@+id/button"
+        android:id="@+id/save"
         android:background="@color/buttons" />
 </LinearLayout>

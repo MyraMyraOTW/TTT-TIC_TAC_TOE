@@ -1,5 +1,7 @@
 package com.example.myriad.ttt_tic_tac_toe;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,16 +17,25 @@ public class Game_Activity extends AppCompatActivity {
     private int[] game_array = new int[9];
     private int[] locked_array = new int[9];
     private int turn;
+    private int counter;
+    private int win;
+
+    public static final String PREF_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_);
 
+        // Instantiating locked array to 0 = unlocked
         for (int i = 0; i < locked_array.length; i++){
             locked_array[i]=0;
         }
 
+        TextView turn_view = (TextView) findViewById(R.id.turn_view);
+        turn_view.setText("PLAYER 1 TURN");
+
+        counter = 0;
         turn = 1;
 
         findViewById(R.id.tl).setOnClickListener(game_listener);
@@ -38,7 +49,6 @@ public class Game_Activity extends AppCompatActivity {
         findViewById(R.id.br).setOnClickListener(game_listener);
 
         findViewById(R.id.reset).setOnClickListener(res_undo);
-        findViewById(R.id.undo).setOnClickListener(res_undo);
     }
 
     private View.OnClickListener game_listener = new View.OnClickListener() {
@@ -88,28 +98,25 @@ public class Game_Activity extends AppCompatActivity {
     private View.OnClickListener res_undo = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch(v.getId()){
-                case R.id.reset:
                     reset_game();
-                    break;
-                case R.id.undo:
-                    break;
-            }
         }
     };
 
-    private void x_o(int resource){
+    private void x_o(int resource) {
         Button b = (Button) findViewById(resource);
-        if (turn == 1){
+
+        if (turn == 1) {
             b.setText("X");
         }
-        if (turn == 2){
+        if (turn == 2) {
             b.setText("O");
         }
+        counter++;
     }
 
     private void reset_game(){
         TextView winner = (TextView) findViewById(R.id.win_condition);
+        TextView turn_view = (TextView) findViewById(R.id.turn_view);
 
         Button b1 = (Button) findViewById(R.id.tl);
         Button b2 = (Button) findViewById(R.id.tm);
@@ -124,31 +131,38 @@ public class Game_Activity extends AppCompatActivity {
         for (int i = 0;i < game_array.length; i++){
             locked_array[i] = 0;
             game_array[i] = 0;
-            turn = 1;
-            winner.setText("WIN");
-            b1.setText("");
-            b2.setText("");
-            b3.setText("");
-            b4.setText("");
-            b5.setText("");
-            b6.setText("");
-            b7.setText("");
-            b8.setText("");
-            b9.setText("");
         }
+
+        win = 0;
+        counter = 0;
+        turn = 1;
+        winner.setText(getString(R.string.winner));
+        turn_view.setText("PLAYER 1 TURN");
+        b1.setText("");
+        b2.setText("");
+        b3.setText("");
+        b4.setText("");
+        b5.setText("");
+        b6.setText("");
+        b7.setText("");
+        b8.setText("");
+        b9.setText("");
     }
 
     private void change_value(int value, int resource){
+        TextView turn_view = (TextView) findViewById(R.id.turn_view);
         if(locked_array[value] != 1){
             if(turn == 1){
                 game_array[value] = 1;
                 x_o(resource);
                 turn = 2;
+                turn_view.setText("PLAYER 2 TURN");
                 locked_array[value] = 1;
             } else if(turn == 2){
                 game_array[value] = 2;
                 x_o(resource);
                 turn = 1;
+                turn_view.setText("PLAYER 1 TURN");
                 locked_array[value] = 1;
             }
         }
@@ -165,38 +179,47 @@ public class Game_Activity extends AppCompatActivity {
         // X win conditions
         if(game_array[0] == 1 && game_array[1] == 1 && game_array[2] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[3] == 1 && game_array[4] == 1 && game_array[5] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[6] == 1 && game_array[7] == 1 && game_array[8] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[0] == 1 && game_array[4] == 1 && game_array[8] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[6] == 1 && game_array[4] == 1 && game_array[2] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[8] == 1 && game_array[4] == 1 && game_array[0] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[0] == 1 && game_array[3] == 1 && game_array[6] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[1] == 1 && game_array[4] == 1 && game_array[7] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[8] == 1 && game_array[5] == 1 && game_array[2] == 1){
             winner.setText("P1 Wins");
+            win = 1;
             lock_all();
         }
 
@@ -204,40 +227,55 @@ public class Game_Activity extends AppCompatActivity {
         // O win conditions
         if(game_array[0] == 2 && game_array[1] == 2 && game_array[2] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[3] == 2 && game_array[4] == 2 && game_array[5] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[6] == 2 && game_array[7] == 2 && game_array[8] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[0] == 2 && game_array[4] == 2 && game_array[8] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[6] == 2 && game_array[4] == 2 && game_array[2] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[8] == 2 && game_array[4] == 2 && game_array[0] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[0] == 2 && game_array[3] == 2 && game_array[6] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[1] == 2 && game_array[4] == 2 && game_array[7] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
         if(game_array[8] == 2 && game_array[5] == 2 && game_array[2] == 2){
             winner.setText("P2 Wins");
+            win = 1;
             lock_all();
         }
+
+        if(counter == 9 && win != 1){
+            winner.setText("DRAW");
+            lock_all();
+        }
+
     }
 
     @Override
