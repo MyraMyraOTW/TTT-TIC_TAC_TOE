@@ -20,7 +20,14 @@ public class Game_Activity extends AppCompatActivity {
     private int counter;
     private int win;
 
+    private String player1;
+    private String player2;
+    private String WINNER_PUT;
+
+    public String[] hist_arrl = new String[10];
+
     public static final String PREF_NAME = "MyPrefsFile";
+    public static final String PREF_HIST = "HIST_STOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +39,19 @@ public class Game_Activity extends AppCompatActivity {
             locked_array[i]=0;
         }
 
+        SharedPreferences players = getSharedPreferences(PREF_NAME, 0);
+
+        player1 = players.getString("Player1", "PLAYER 1");
+        player2 = players.getString("Player2", "PLAYER 2");
+
+        if(player1.equals("") && player2.equals("")){
+            player1 = "PLAYER 1";
+            player2 = "PLAYER 2";
+        }
+
+
         TextView turn_view = (TextView) findViewById(R.id.turn_view);
-        turn_view.setText("PLAYER 1 TURN");
+        turn_view.setText(player1 + " TURN");
 
         counter = 0;
         turn = 1;
@@ -137,7 +155,7 @@ public class Game_Activity extends AppCompatActivity {
         counter = 0;
         turn = 1;
         winner.setText(getString(R.string.winner));
-        turn_view.setText("PLAYER 1 TURN");
+        turn_view.setText(player1 + " TURN");
         b1.setText("");
         b2.setText("");
         b3.setText("");
@@ -156,13 +174,13 @@ public class Game_Activity extends AppCompatActivity {
                 game_array[value] = 1;
                 x_o(resource);
                 turn = 2;
-                turn_view.setText("PLAYER 2 TURN");
+                turn_view.setText(player2 + " TURN");
                 locked_array[value] = 1;
             } else if(turn == 2){
                 game_array[value] = 2;
                 x_o(resource);
                 turn = 1;
-                turn_view.setText("PLAYER 1 TURN");
+                turn_view.setText(player1 + " TURN");
                 locked_array[value] = 1;
             }
         }
@@ -178,47 +196,57 @@ public class Game_Activity extends AppCompatActivity {
         TextView winner = (TextView) findViewById(R.id.win_condition);
         // X win conditions
         if(game_array[0] == 1 && game_array[1] == 1 && game_array[2] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[3] == 1 && game_array[4] == 1 && game_array[5] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[6] == 1 && game_array[7] == 1 && game_array[8] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[0] == 1 && game_array[4] == 1 && game_array[8] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[6] == 1 && game_array[4] == 1 && game_array[2] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[8] == 1 && game_array[4] == 1 && game_array[0] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[0] == 1 && game_array[3] == 1 && game_array[6] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[1] == 1 && game_array[4] == 1 && game_array[7] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
         if(game_array[8] == 1 && game_array[5] == 1 && game_array[2] == 1){
-            winner.setText("P1 Wins");
+            winner.setText(player1 + " Wins");
+            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
@@ -226,55 +254,74 @@ public class Game_Activity extends AppCompatActivity {
 
         // O win conditions
         if(game_array[0] == 2 && game_array[1] == 2 && game_array[2] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[3] == 2 && game_array[4] == 2 && game_array[5] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[6] == 2 && game_array[7] == 2 && game_array[8] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[0] == 2 && game_array[4] == 2 && game_array[8] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[6] == 2 && game_array[4] == 2 && game_array[2] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[8] == 2 && game_array[4] == 2 && game_array[0] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[0] == 2 && game_array[3] == 2 && game_array[6] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[1] == 2 && game_array[4] == 2 && game_array[7] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
         if(game_array[8] == 2 && game_array[5] == 2 && game_array[2] == 2){
-            winner.setText("P2 Wins");
+            winner.setText(player2 + " Wins");
+            WINNER_PUT = player2;
             win = 1;
             lock_all();
         }
 
+        // Draw Condition
         if(counter == 9 && win != 1){
             winner.setText("DRAW");
             lock_all();
         }
+
+    }
+
+    private void save_hist(){
+        SharedPreferences pref_hist_acc = getSharedPreferences(PREF_HIST, 0);
+        SharedPreferences.Editor editor = pref_hist_acc.edit();
+
+
+
 
     }
 

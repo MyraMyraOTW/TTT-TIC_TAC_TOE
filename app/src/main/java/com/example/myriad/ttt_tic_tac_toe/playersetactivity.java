@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class playersetactivity extends AppCompatActivity {
     EditText et1;
@@ -30,11 +31,24 @@ public class playersetactivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             // Shared Prefs
+
+
+
+
             SharedPreferences players = getSharedPreferences(PREF_NAME, 0);
             SharedPreferences.Editor editor = players.edit();
+
+            if(players.contains("Player1") || players.contains("Player2")){
+                editor.clear();
+                editor.commit();
+            }
+
             editor.putString("Player1", et1.getText().toString());
             editor.putString("Player2", et2.getText().toString());
             editor.commit();
+
+            Toast toast = Toast.makeText(getApplicationContext(), "SAVED NAMES", Toast.LENGTH_SHORT);
+            toast.show();
         }
     };
 
