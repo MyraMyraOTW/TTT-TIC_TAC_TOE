@@ -320,11 +320,18 @@ public class Game_Activity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor editor = pref.edit();
 
+        String h1t = pref.getString("hist1", "Undetermined");
+        String h2t = pref.getString("hist2", "Undetermined");
+        String h3t = pref.getString("hist3", "Undetermined");
+        String h4t = pref.getString("hist4", "Undetermined");
 
         editor.putString("hist1", WINNER_PUT + " won with " + counter + " moves");
+        editor.putString("hist2", h1t);
+        editor.putString("hist3", h2t);
+        editor.putString("hist4", h3t);
+        editor.putString("hist5", h4t);
 
-
-
+        editor.commit();
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class histactivity extends AppCompatActivity {
@@ -17,7 +18,18 @@ public class histactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_histactivity);
 
-        //Place in refresh
+        refreshb();
+        findViewById(R.id.refresh).setOnClickListener(ref);
+    }
+
+    private View.OnClickListener ref = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            refreshb();
+        }
+    };
+
+    private void refreshb(){
         SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
 
         TextView gm1 = (TextView) findViewById(R.id.g1);
@@ -31,7 +43,6 @@ public class histactivity extends AppCompatActivity {
         gm3.setText(pref.getString("hist3", null));
         gm4.setText(pref.getString("hist4", null));
         gm5.setText(pref.getString("hist5", null));
-
     }
 
     @Override
