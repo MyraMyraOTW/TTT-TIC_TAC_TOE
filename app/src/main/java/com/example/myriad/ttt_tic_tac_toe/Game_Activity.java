@@ -19,6 +19,7 @@ public class Game_Activity extends AppCompatActivity {
     private int turn;
     private int counter;
     private int win;
+    private int sav;
 
     private String player1;
     private String player2;
@@ -52,6 +53,7 @@ public class Game_Activity extends AppCompatActivity {
         TextView turn_view = (TextView) findViewById(R.id.turn_view);
         turn_view.setText(player1 + " TURN");
 
+        sav = 0;
         counter = 0;
         turn = 1;
 
@@ -153,6 +155,7 @@ public class Game_Activity extends AppCompatActivity {
         win = 0;
         counter = 0;
         turn = 1;
+        sav = 0;
         winner.setText(getString(R.string.winner));
         turn_view.setText(player1 + " TURN");
         b1.setText("");
@@ -186,7 +189,10 @@ public class Game_Activity extends AppCompatActivity {
     }
 
     private void lock_all(){
-        save_hist();
+        if (sav != 1){
+            save_hist();
+            sav = 1;
+        }
         for (int i = 0; i < locked_array.length; i++){
             locked_array[i] = 1;
         }
