@@ -22,14 +22,15 @@
 
     <string name="hist">Game History</string>
 
-    <string name="gam1">Game 1</string>
-    <string name="gam2">Game 2</string>
-    <string name="gam3">Game 3</string>
-    <string name="gam4">Game 4</string>
-    <string name="gam5">Game 5</string>
+    <string name="gam1"></string>
+    <string name="gam2"></string>
+    <string name="gam3"></string>
+    <string name="gam4"></string>
+    <string name="gam5"></string>
 
     <string name="title_activity_game_">Game_Activity</string>
     <string name="title_activity_playersetactivity">playersetactivity</string>
     <string name="title_activity_history_">History_Activity</string>
     <string name="title_activity_histactivity">histactivity</string>
+    <string name="Refresher">REFRESH</string>
 </resources>

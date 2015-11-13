@@ -186,6 +186,7 @@ public class Game_Activity extends AppCompatActivity {
     }
 
     private void lock_all(){
+        save_hist();
         for (int i = 0; i < locked_array.length; i++){
             locked_array[i] = 1;
         }
@@ -311,21 +312,26 @@ public class Game_Activity extends AppCompatActivity {
             winner.setText("DRAW");
             lock_all();
         }
-
-        save_hist();
-
     }
 
     private void save_hist(){
         SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor editor = pref.edit();
 
-        String h1t = pref.getString("hist1", "Undetermined");
-        String h2t = pref.getString("hist2", "Undetermined");
-        String h3t = pref.getString("hist3", "Undetermined");
-        String h4t = pref.getString("hist4", "Undetermined");
+        String tmp;
 
-        editor.putString("hist1", WINNER_PUT + " won with " + counter + " moves");
+        if (counter == 9 && win != 1){
+            tmp = "DRAW";
+        } else {
+            tmp = WINNER_PUT + " won with " + counter + " moves";
+        }
+
+        String h1t = pref.getString("hist1", null);
+        String h2t = pref.getString("hist2", null);
+        String h3t = pref.getString("hist3", null);
+        String h4t = pref.getString("hist4", null);
+
+        editor.putString("hist1", tmp);
         editor.putString("hist2", h1t);
         editor.putString("hist3", h2t);
         editor.putString("hist4", h3t);

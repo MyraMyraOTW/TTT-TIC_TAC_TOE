@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor editor = pref.edit();
 
-        editor.putString("hist1", "Undetermined");
-        editor.putString("hist2", "Undetermined");
-        editor.putString("hist3", "Undetermined");
-        editor.putString("hist4", "Undetermined");
-        editor.putString("hist5", "Undetermined");
+        editor.putString("hist1", null);
+        editor.putString("hist2", null);
+        editor.putString("hist3", null);
+        editor.putString("hist4", null);
+        editor.putString("hist5", null);
         editor.commit();
     }
 
