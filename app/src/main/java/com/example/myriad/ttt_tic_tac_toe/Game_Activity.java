@@ -27,7 +27,6 @@ public class Game_Activity extends AppCompatActivity {
     public String[] hist_arrl = new String[10];
 
     public static final String PREF_NAME = "MyPrefsFile";
-    public static final String PREF_HIST = "HIST_STOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,7 +197,6 @@ public class Game_Activity extends AppCompatActivity {
         if(game_array[0] == 1 && game_array[1] == 1 && game_array[2] == 1){
             winner.setText(player1 + " Wins");
             WINNER_PUT = player1;
-            WINNER_PUT = player1;
             win = 1;
             lock_all();
         }
@@ -314,12 +312,16 @@ public class Game_Activity extends AppCompatActivity {
             lock_all();
         }
 
+        save_hist();
+
     }
 
     private void save_hist(){
-        SharedPreferences pref_hist_acc = getSharedPreferences(PREF_HIST, 0);
-        SharedPreferences.Editor editor = pref_hist_acc.edit();
+        SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
+        SharedPreferences.Editor editor = pref.edit();
 
+
+        editor.putString("hist1", WINNER_PUT + " won with " + counter + " moves");
 
 
 

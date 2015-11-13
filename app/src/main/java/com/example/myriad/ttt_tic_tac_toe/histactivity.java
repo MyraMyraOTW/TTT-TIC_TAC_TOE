@@ -1,16 +1,37 @@
 package com.example.myriad.ttt_tic_tac_toe;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class histactivity extends AppCompatActivity {
+
+    // Preference file name
+    public static final String PREF_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_histactivity);
+
+        //Place in refresh
+        SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
+
+        TextView gm1 = (TextView) findViewById(R.id.g1);
+        TextView gm2 = (TextView) findViewById(R.id.g2);
+        TextView gm3 = (TextView) findViewById(R.id.g3);
+        TextView gm4 = (TextView) findViewById(R.id.g4);
+        TextView gm5 = (TextView) findViewById(R.id.g5);
+
+        gm1.setText(pref.getString("hist1", null));
+        gm2.setText(pref.getString("hist2", null));
+        gm3.setText(pref.getString("hist3", null));
+        gm4.setText(pref.getString("hist4", null));
+        gm5.setText(pref.getString("hist5", null));
+
     }
 
     @Override

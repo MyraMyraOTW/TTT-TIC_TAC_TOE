@@ -31,14 +31,10 @@ public class playersetactivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             // Shared Prefs
+            SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
+            SharedPreferences.Editor editor = pref.edit();
 
-
-
-
-            SharedPreferences players = getSharedPreferences(PREF_NAME, 0);
-            SharedPreferences.Editor editor = players.edit();
-
-            if(players.contains("Player1") || players.contains("Player2")){
+            if(pref.contains("Player1") || pref.contains("Player2")){
                 editor.clear();
                 editor.commit();
             }
