@@ -15,19 +15,25 @@ import android.widget.TextView;
 
 public class Game_Activity extends AppCompatActivity {
 
+    // Arrays for game
     private int[] game_array = new int[9];
     private int[] locked_array = new int[9];
+
+    // Game Variables
     private int turn;
     private int counter;
     private int win;
     private int sav;
 
+    // Player variables
     private String player1;
     private String player2;
     private String WINNER_PUT;
 
+    // Media Player
     private MediaPlayer mp;
 
+    // Prefs File Name :: Note: Should Rename
     public static final String PREF_NAME = "MyPrefsFile";
 
     @Override
@@ -73,6 +79,7 @@ public class Game_Activity extends AppCompatActivity {
         findViewById(R.id.reset).setOnClickListener(res_undo);
     }
 
+    // State Saver
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -123,6 +130,7 @@ public class Game_Activity extends AppCompatActivity {
         outState.putString("WINNER_PUT", WINNER_PUT);
     }
 
+    // Saved State Restorer
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -163,6 +171,7 @@ public class Game_Activity extends AppCompatActivity {
         a9.setText(savedInstanceState.getString("b9"));
     }
 
+    // Button Listener for TIC TAC TOE field
     private View.OnClickListener game_listener = new View.OnClickListener() {
 
         @Override
@@ -208,6 +217,7 @@ public class Game_Activity extends AppCompatActivity {
         }
     };
 
+    // Reset Button Listener :: Undo Redacted
     private View.OnClickListener res_undo = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -215,6 +225,7 @@ public class Game_Activity extends AppCompatActivity {
         }
     };
 
+    // Changes Buttons to X or O
     private void x_o(int resource) {
         Button b = (Button) findViewById(resource);
 
@@ -227,6 +238,7 @@ public class Game_Activity extends AppCompatActivity {
         counter++;
     }
 
+    // Resets Game Variables
     private void reset_game(){
         TextView winner = (TextView) findViewById(R.id.win_condition);
         TextView turn_view = (TextView) findViewById(R.id.turn_view);
@@ -263,6 +275,7 @@ public class Game_Activity extends AppCompatActivity {
         b9.setText("");
     }
 
+    // Changes array value and turns
     private void change_value(int value, int resource){
         TextView turn_view = (TextView) findViewById(R.id.turn_view);
         if(locked_array[value] != 1){
@@ -283,6 +296,7 @@ public class Game_Activity extends AppCompatActivity {
         }
     }
 
+    // Locks all array positions (Sets lock array to all 1)
     private void lock_all(){
         if (sav != 1){
             save_hist();
@@ -293,6 +307,7 @@ public class Game_Activity extends AppCompatActivity {
         }
     }
 
+    // Checks who won using ridiculous amounts of if statements
     private void check_win(){
         TextView winner = (TextView) findViewById(R.id.win_condition);
         // X win conditions
@@ -415,6 +430,7 @@ public class Game_Activity extends AppCompatActivity {
         }
     }
 
+    // Saves win to history
     private void save_hist(){
         SharedPreferences pref = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor editor = pref.edit();
