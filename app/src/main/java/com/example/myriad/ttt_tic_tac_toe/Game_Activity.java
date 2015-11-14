@@ -2,6 +2,7 @@ package com.example.myriad.ttt_tic_tac_toe;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,12 +26,16 @@ public class Game_Activity extends AppCompatActivity {
     private String player2;
     private String WINNER_PUT;
 
+    private MediaPlayer mp;
+
     public static final String PREF_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_);
+
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.beep);
 
         // Instantiating locked array to 0 = unlocked
         for (int i = 0; i < locked_array.length; i++){
@@ -159,6 +164,7 @@ public class Game_Activity extends AppCompatActivity {
     }
 
     private View.OnClickListener game_listener = new View.OnClickListener() {
+
         @Override
         public void onClick(View v) {
             switch(v.getId()){
@@ -260,6 +266,7 @@ public class Game_Activity extends AppCompatActivity {
     private void change_value(int value, int resource){
         TextView turn_view = (TextView) findViewById(R.id.turn_view);
         if(locked_array[value] != 1){
+            mp.start();
             if(turn == 1){
                 game_array[value] = 1;
                 x_o(resource);
