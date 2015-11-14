@@ -28,6 +28,8 @@
     <string name="gam4"></string>
     <string name="gam5"></string>
 
+    <string name="p">ENTER PLAYER NAMES</string>
+
     <string name="title_activity_game_">Game_Activity</string>
     <string name="title_activity_playersetactivity">playersetactivity</string>
     <string name="title_activity_history_">History_Activity</string>

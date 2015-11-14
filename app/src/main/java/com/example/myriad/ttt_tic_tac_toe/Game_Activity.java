@@ -25,8 +25,6 @@ public class Game_Activity extends AppCompatActivity {
     private String player2;
     private String WINNER_PUT;
 
-    public String[] hist_arrl = new String[10];
-
     public static final String PREF_NAME = "MyPrefsFile";
 
     @Override
@@ -68,6 +66,96 @@ public class Game_Activity extends AppCompatActivity {
         findViewById(R.id.br).setOnClickListener(game_listener);
 
         findViewById(R.id.reset).setOnClickListener(res_undo);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        TextView resultsstd = (TextView) findViewById(R.id.win_condition);
+        outState.putString("winner", resultsstd.getText().toString());
+
+        outState.putIntArray("game_arr", game_array);
+        outState.putIntArray("locked_arr", locked_array);
+
+        outState.putInt("turn", turn);
+        outState.putInt("cnt", counter);
+        outState.putInt("win", win);
+        outState.putInt("sav", sav);
+
+        outState.putString("p1", player1);
+        outState.putString("p2", player2);
+
+        Button a1 = (Button) findViewById(R.id.tl);
+        Button a2 = (Button) findViewById(R.id.tm);
+        Button a3 = (Button) findViewById(R.id.tr);
+        Button a4 = (Button) findViewById(R.id.ml);
+        Button a5 = (Button) findViewById(R.id.mm);
+        Button a6 = (Button) findViewById(R.id.mr);
+        Button a7 = (Button) findViewById(R.id.bl);
+        Button a8 = (Button) findViewById(R.id.bm);
+        Button a9 = (Button) findViewById(R.id.br);
+
+        String b1 = a1.getText().toString();
+        String b2 = a2.getText().toString();
+        String b3 = a3.getText().toString();
+        String b4 = a4.getText().toString();
+        String b5 = a5.getText().toString();
+        String b6 = a6.getText().toString();
+        String b7 = a7.getText().toString();
+        String b8 = a8.getText().toString();
+        String b9 = a9.getText().toString();
+
+        outState.putString("b1", b1);
+        outState.putString("b2", b2);
+        outState.putString("b3", b3);
+        outState.putString("b4", b4);
+        outState.putString("b5", b5);
+        outState.putString("b6", b6);
+        outState.putString("b7", b7);
+        outState.putString("b8", b8);
+        outState.putString("b9", b9);
+
+        outState.putString("WINNER_PUT", WINNER_PUT);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        TextView resultsstd = (TextView) findViewById(R.id.win_condition);
+        resultsstd.setText(savedInstanceState.getString("winner"));
+
+        game_array = savedInstanceState.getIntArray("game_arr");
+        locked_array = savedInstanceState.getIntArray("locked_arr");
+
+        turn = savedInstanceState.getInt("turn");
+        counter = savedInstanceState.getInt("cnt");
+        win = savedInstanceState.getInt("win");
+        sav = savedInstanceState.getInt("sav");
+
+        player1 = savedInstanceState.getString("p1");
+        player2 = savedInstanceState.getString("p2");
+
+        WINNER_PUT = savedInstanceState.getString("WINNER_PUT");
+
+        Button a1 = (Button) findViewById(R.id.tl);
+        Button a2 = (Button) findViewById(R.id.tm);
+        Button a3 = (Button) findViewById(R.id.tr);
+        Button a4 = (Button) findViewById(R.id.ml);
+        Button a5 = (Button) findViewById(R.id.mm);
+        Button a6 = (Button) findViewById(R.id.mr);
+        Button a7 = (Button) findViewById(R.id.bl);
+        Button a8 = (Button) findViewById(R.id.bm);
+        Button a9 = (Button) findViewById(R.id.br);
+
+        a1.setText(savedInstanceState.getString("b1"));
+        a2.setText(savedInstanceState.getString("b2"));
+        a3.setText(savedInstanceState.getString("b3"));
+        a4.setText(savedInstanceState.getString("b4"));
+        a5.setText(savedInstanceState.getString("b5"));
+        a6.setText(savedInstanceState.getString("b6"));
+        a7.setText(savedInstanceState.getString("b7"));
+        a8.setText(savedInstanceState.getString("b8"));
+        a9.setText(savedInstanceState.getString("b9"));
     }
 
     private View.OnClickListener game_listener = new View.OnClickListener() {
