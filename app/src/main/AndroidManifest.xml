@@ -32,6 +32,7 @@
             android:name=".histactivity"
             android:label="@string/title_activity_histactivity" >
         </activity>
+
     </application>
 
 </manifest>

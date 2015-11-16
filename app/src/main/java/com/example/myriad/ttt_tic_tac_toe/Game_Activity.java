@@ -1,6 +1,7 @@
 package com.example.myriad.ttt_tic_tac_toe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,8 @@ public class Game_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_game_);
 
         mp = MediaPlayer.create(getApplicationContext(), R.raw.beep);
+        mp.setLooping(true);
+        mp.start();
 
         // Instantiating locked array to 0 = unlocked
         for (int i = 0; i < locked_array.length; i++){
@@ -77,6 +80,20 @@ public class Game_Activity extends AppCompatActivity {
         findViewById(R.id.br).setOnClickListener(game_listener);
 
         findViewById(R.id.reset).setOnClickListener(res_undo);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+        mp.stop();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        mp.stop();
     }
 
     // State Saver
@@ -279,7 +296,7 @@ public class Game_Activity extends AppCompatActivity {
     private void change_value(int value, int resource){
         TextView turn_view = (TextView) findViewById(R.id.turn_view);
         if(locked_array[value] != 1){
-            mp.start();
+            // mp.start();
             if(turn == 1){
                 game_array[value] = 1;
                 x_o(resource);
